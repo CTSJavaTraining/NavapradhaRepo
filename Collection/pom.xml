@@ -8,6 +8,7 @@
   	<module>CollectionModule</module>
   	<module>JavaBasics</module>
   	<module>JDBC</module>
+  	<module>MultiThreading</module>
   </modules>
   <dependencies><dependency>
     <groupId>log4j</groupId>
@@ -29,6 +30,9 @@
     </plugins>
   
   </build>
+
+
+  
 
   
 </project>
