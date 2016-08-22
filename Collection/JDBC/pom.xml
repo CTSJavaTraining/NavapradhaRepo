@@ -5,5 +5,5 @@
     <artifactId>CaseStudy</artifactId>
     <version>0.0.1-SNAPSHOT</version>
   </parent>
-  <artifactId>JavaBasics</artifactId>
+  <artifactId>JDBC</artifactId>
 </project>
