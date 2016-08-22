@@ -6,6 +6,7 @@
   <packaging>pom</packaging>
   <modules>
   	<module>CollectionModule</module>
+  	<module>JavaBasics</module>
   </modules>
   <dependencies><dependency>
     <groupId>log4j</groupId>
