@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+    http://www.springframework.org/schema/beans/spring-beans-3.0.xsd">
+
+	<bean id="injectInnerClass" class="com.spring.IOCTest.InjectInnerBeans">
+	</bean>
+	<bean id="employee" class="com.spring.IOCTest.Employee">
+		<property name="name" value="xxx" />
+		<property name="salary" value="5000" />
+		<property name="id" value="234" />
+		<property name="DOJ" value="21-10-2015" />
+		<property name="designation" value="system engineer" />
+	</bean>
+
+	<bean id="iocExample" class="com.spring.IOCTest.DIExample">
+		<constructor-arg type="java.lang.String" value="Zara" />
+		<property name="employeeList">
+			<list>
+				<ref bean="employee" />
+				<ref bean="employee" />
+			</list>
+		</property>
+		<property name="employeeSet">
+			<set>
+				<ref bean="employee" />
+				<ref bean="employee" />
+			</set>
+		</property>
+		<property name="employeeMap">
+			<map>
+				<entry key="1" value-ref="employee"></entry>
+				<entry key="2" value-ref="employee"></entry>
+			</map>
+		</property>
+		<property name="message" value="Hello World!" />
+
+	</bean>
+
+
+	<bean id="iocExampleTest" class="com.spring.IOCTest.DIExample">
+
+		<constructor-arg ref="injectInnerClass" />
+		<property name="message" value="Hello World!" />
+
+	</bean>
+
+
+
+
+
+</beans>

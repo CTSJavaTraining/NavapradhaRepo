@@ -53,7 +53,7 @@ public class SortEmployee {
 	   
 	    .sorted((e1, e2) -> e1.getAddress().city
 	            .compareTo(e2.getAddress().city))
-	    .forEach(e -> logger.debug(e.getName()+"   "+e.getId()+"   "+e.getDesignation()+ "    "+e.getDOJ()+"    "+e.getAddress().city+ "   "+e.getSalary()));
+	    .forEach(e -> logger.info(e.getName()+"   "+e.getId()+"   "+e.getDesignation()+ "    "+e.getDOJ()+"    "+e.getAddress().city+ "   "+e.getSalary()));
 	    
 		
 	}

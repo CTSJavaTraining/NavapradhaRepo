@@ -47,7 +47,7 @@ public class JDBCPreparedStatementEmployee {
 		Connection dbConnection = null;
 		PreparedStatement preparedStatement = null;
 
-		String selectSQL = "SELECT * FROM PRODUCTS WHERE productID = ?";
+		String selectSQL = "SELECT * FROM test.PRODUCTS";
 
 		try {
 			dbConnection = getDBConnection();
@@ -91,14 +91,11 @@ public class JDBCPreparedStatementEmployee {
 	 */
 	private static void updateProducts() throws SQLException {
 
-		Connection dbConnection = null;
-		PreparedStatement preparedStatement = null;
-
 		String selectSQL = "UPDATE PRODUCTS SET NAME = 'xxx' WHERE productID = ?";
 
-		try {
-			dbConnection = getDBConnection();
-			preparedStatement = dbConnection.prepareStatement(selectSQL);
+		try (Connection dbConnection = getDBConnection();
+				PreparedStatement preparedStatement = dbConnection.prepareStatement(selectSQL);) {
+
 			preparedStatement.setInt(1, 1);
 
 			// execute select SQL stetement
@@ -108,17 +105,15 @@ public class JDBCPreparedStatementEmployee {
 
 			logger.debug(e.getMessage());
 
-		} finally {
-
-			if (preparedStatement != null) {
-				preparedStatement.close();
-			}
-
-			if (dbConnection != null) {
-				dbConnection.close();
-			}
-
-		}
+		} /*
+			 * finally {
+			 * 
+			 * if (preparedStatement != null) { preparedStatement.close(); }
+			 * 
+			 * if (dbConnection != null) { dbConnection.close(); }
+			 * 
+			 * }
+			 */
 
 	}
 
