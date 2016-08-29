@@ -26,7 +26,7 @@ public class IOCExample {
 
 		objC.getEmployeeList().forEach(
 				employee -> logger.debug("Using list - setter injection: " + employee.getId() + " " + employee.getName()
-						+ " " + employee.getDOJ() + " " + employee.getDesignation() + " " + employee.getSalary()));
+						+ " " + employee.getDOJ() + " " + employee.getDesignation() + " " + employee.getSalary()+" "+employee.getGrade()+" "+employee.getBonus()));
 		objC.getEmployeeSet().forEach(
 				employee -> logger.debug("Using set - setter injection: " + employee.getId() + " " + employee.getName()
 						+ " " + employee.getDOJ() + " " + employee.getDesignation() + " " + employee.getSalary()));

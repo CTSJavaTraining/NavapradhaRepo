@@ -7,34 +7,32 @@
 
 	<bean id="injectInnerClass" class="com.spring.IOCTest.InjectInnerBeans">
 	</bean>
-	<bean id="employee1" class="com.spring.IOCTest.Employee">
+	<bean id="employee" class="com.spring.IOCTest.Employee">
 		<property name="name" value="xxx" />
 		<property name="salary" value="5000" />
 		<property name="id" value="234" />
 		<property name="DOJ" value="21-10-2015" />
 		<property name="designation" value="system engineer" />
-		<property name="grade" value="A" />
-		
 	</bean>
 
 	<bean id="iocExample" class="com.spring.IOCTest.DIExample">
 		<constructor-arg type="java.lang.String" value="Zara" />
 		<property name="employeeList">
 			<list>
-				<ref bean="employee1" />
-				<ref bean="employee1" />
+				<ref bean="employee" />
+				<ref bean="employee" />
 			</list>
 		</property>
 		<property name="employeeSet">
 			<set>
-				<ref bean="employee1" />
-				<ref bean="employee1" />
+				<ref bean="employee" />
+				<ref bean="employee" />
 			</set>
 		</property>
 		<property name="employeeMap">
 			<map>
-				<entry key="1" value-ref="employee1"></entry>
-				<entry key="2" value-ref="employee1"></entry>
+				<entry key="1" value-ref="employee"></entry>
+				<entry key="2" value-ref="employee"></entry>
 			</map>
 		</property>
 		<property name="message" value="Hello World!" />
