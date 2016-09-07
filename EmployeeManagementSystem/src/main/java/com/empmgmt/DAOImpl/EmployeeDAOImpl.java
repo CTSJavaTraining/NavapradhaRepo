@@ -13,11 +13,16 @@ import com.empmgmt.bean.Employee;
 import com.empmgmt.util.EmployeeUtil;
 
 
+import org.apache.log4j.Logger;
+
+
 public class EmployeeDAOImpl implements EmployeeDAO {
 	
 	EntityManager entityManager = null;
 
     Employee employee=null;
+    
+    final static Logger logger = Logger.getLogger(EmployeeDAOImpl.class);
 
 
 	public List<Employee> getAllEmployees() {
@@ -27,7 +32,7 @@ public class EmployeeDAOImpl implements EmployeeDAO {
 		Query query = entityManager.createQuery("SELECT e FROM Employee e");
 		List<Employee> employeeList =query.getResultList();
 		for (Employee employee : employeeList) {
-			System.out.println("Employee Name:"+employee.getEmployeeName());
+			logger.info("Employee Name:"+employee.getEmployeeName());
 		}
 		return query.getResultList();
 	}
@@ -38,7 +43,7 @@ public class EmployeeDAOImpl implements EmployeeDAO {
 //		EntityManager em = factory.createEntityManager();
 //		
 //		em.persist(employee);
-		System.out.println("inserting a employee");
+		logger.info("inserting a employee");
 		entityManager=EmployeeUtil.getEntityManager();
 		 entityManager.getTransaction().begin();
 		 Iterator itr=employee.iterator();  

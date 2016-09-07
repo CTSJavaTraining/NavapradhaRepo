@@ -8,13 +8,24 @@
 
 	<bean id="employee" class="com.empmgmt.bean.Employee">
 	
-		
+		<property name="salary" value="20000"/>
 		<property name="grade" value="A" />
-		<property name="bonus" value="#{employee.grade == 'A' ? 10 : 50}"/>
+		<property name="bonus" value="#{employee1.grade matches 'A' ?  (employee1.salary*5)/100 : (employee1.salary*6.5)/100 }"/>
 		
 		
 		
 	</bean>
+	<bean id="employee1" class="com.empmgmt.bean.Employee">
+	
+		
+		<property name="grade" value="A" />
+		<property name="salary" value="20000"/>
+	
+		
+		
+		
+	</bean>
+	
 
 	
 
