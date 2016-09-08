@@ -20,11 +20,11 @@ public class EmployeeClient {
 		EmployeeService employeeService = (EmployeeService) factory.create();
 
 		List<Employee> employeeList = new ArrayList<Employee>();
-        int empId = 0;
+       
 		employeeService.insertEmployee(employeeList);
 		employeeService.getAllEmployees();
-		employeeService.updateEmployee(empId);
-		employeeService.deleteEmployee(empId);
+		employeeService.updateEmployee(1);
+		employeeService.deleteEmployee(1);
 	}
 
 }

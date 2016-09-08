@@ -73,10 +73,11 @@ public class EmployeeDAOImpl implements EmployeeDAO {
 		// TODO Auto-generated method stub
 		entityManager = EmployeeUtil.getEntityManager();
 		entityManager.getTransaction().begin();
-
+		logger.info("Employee Id given:"+empId);
 		Query query = entityManager
-				.createQuery("UPDATE employee e SET e.designation = 'system engineer' " + "WHERE e.id= :id");
+				.createQuery("UPDATE Employee e SET e.designation = 'system engineer' " + "WHERE e.id= :id");
 		query.setParameter("id", empId);
+
 		int updateCount = query.executeUpdate();
 		if (updateCount > 0) {
 			logger.info("Record Updated Successfully");
