@@ -14,7 +14,7 @@ public interface EmployeeService {
 	@WebMethod
     public void insertEmployee(List<Employee> employee);
 	@WebMethod
-    public void updateEmployee(Employee employee);
+    public void updateEmployee(Integer empId);
 	@WebMethod
     public void deleteEmployee(Integer empId);
 

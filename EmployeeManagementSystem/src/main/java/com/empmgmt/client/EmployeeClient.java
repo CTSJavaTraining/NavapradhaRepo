@@ -2,15 +2,15 @@ package com.empmgmt.client;
 
 import java.util.ArrayList;
 import java.util.List;
-
 import org.apache.cxf.jaxws.JaxWsProxyFactoryBean;
-
-import com.empmgmt.DAOInterface.EmployeeDAO;
-import com.empmgmt.bean.Address;
 import com.empmgmt.bean.Employee;
 import com.empmgmt.service.EmployeeService;
-import com.empmgmt.service.EmployeeService;
 
+/**
+ * 
+ * @author 523696
+ *
+ */
 
 public class EmployeeClient {
 	
@@ -26,8 +26,8 @@ public class EmployeeClient {
 
 	employeeService.insertEmployee(employeeList);
 	employeeService.getAllEmployees();
-//	employeeService.updateEmployee(employee);
-//	employeeService.deleteEmployee(3);
+	employeeService.updateEmployee(3);
+	employeeService.deleteEmployee(3);
 	}
 
 }

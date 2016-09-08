@@ -1,7 +1,7 @@
 package com.empmgmt.serviceimpl;
 
-import java.util.ArrayList;
 
+import java.util.Iterator;
 import java.util.List;
 
 import javax.jws.WebService;
@@ -13,7 +13,7 @@ import com.empmgmt.DAOImpl.EmployeeDAOImpl;
 import com.empmgmt.bean.Employee;
 import com.empmgmt.service.EmployeeService;
 
-import com.empmgmt.bean.Address;
+
 import org.apache.log4j.Logger;
 
 @WebService(endpointInterface = "com.empmgmt.service.EmployeeService", serviceName = "employeeService")
@@ -37,21 +37,20 @@ public void insertEmployee(List<Employee> employee) {
 
 	Employee emp = (Employee) context.getBean("employee");
 	
-	
-	emp.setEmployeeName(employee.get(0).getEmployeeName());
-	emp.setDateOfJoining(employee.get(0).getDateOfJoining());
-	emp.setDesignation(employee.get(0).getDesignation());
-	emp.setAddress(employee.get(0).getAddress());
-	emp.setEmailId(employee.get(0).getEmailId());
-	
-
+	Iterator<Employee> itr=employee.iterator();  
+	while(itr.hasNext()){  
+		Employee e=(Employee)itr.next(); 
+		e.setSalary(emp.getSalary());
+		e.setGrade(emp.getGrade());
+		e.setBonus(emp.getBonus());
+	}
 	empDAO.insertEmployee(employee);
 	
 }
 
-public void updateEmployee(Employee employee) {
+public void updateEmployee(Integer empId) {
 	// TODO Auto-generated method stub
-	empDAO.updateEmployee(employee);
+	empDAO.updateEmployee(empId);
 	
 }
 

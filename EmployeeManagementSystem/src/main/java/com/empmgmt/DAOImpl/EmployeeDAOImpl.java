@@ -4,8 +4,7 @@ import java.util.Iterator;
 import java.util.List;
 
 import javax.persistence.EntityManager;
-import javax.persistence.EntityManagerFactory;
-import javax.persistence.Persistence;
+
 import javax.persistence.Query;
 
 import com.empmgmt.DAOInterface.EmployeeDAO;
@@ -46,7 +45,7 @@ public class EmployeeDAOImpl implements EmployeeDAO {
 		logger.info("inserting a employee");
 		entityManager=EmployeeUtil.getEntityManager();
 		 entityManager.getTransaction().begin();
-		 Iterator itr=employee.iterator();  
+		 Iterator<Employee> itr=employee.iterator();  
 			while(itr.hasNext()){  
 				Employee emp=(Employee)itr.next(); 
 			
@@ -61,11 +60,19 @@ public class EmployeeDAOImpl implements EmployeeDAO {
 		
 	}
 
-	public void updateEmployee(Employee employee) {
+	public void updateEmployee(Integer empId) {
 		// TODO Auto-generated method stub
 		entityManager=EmployeeUtil.getEntityManager();
 		 entityManager.getTransaction().begin();
-		  entityManager.merge(employee);
+
+		 Query query = entityManager
+				 .createQuery("UPDATE employee e SET e.designation = 'system engineer' "
+				 + "WHERE e.id= :id");
+				 query.setParameter("id", empId);
+				 int updateCount = query.executeUpdate();
+				 if (updateCount > 0) {
+				 logger.info("Record Updated Successfully");
+				 }
 
           entityManager.getTransaction().commit();
 		
