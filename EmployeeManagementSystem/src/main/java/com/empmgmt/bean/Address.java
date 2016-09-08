@@ -7,42 +7,37 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 
-
-
 /**
- * @author 523696 
- * Bean class with variables and appropriate getters and setters  used for accessing variables.
+ * @author 523696 Bean class with variables and appropriate getters and setters
+ *         used for accessing variables.
  */
 @Entity
 public class Address {
 	@Id
 	@GeneratedValue
-    private int addressId;
-public int getAddressId() {
-	return addressId;
-}
-
-public void setAddressId(int addressId) {
-	this.addressId = addressId;
-}
-
-@ManyToOne(cascade = CascadeType.PERSIST)
-@JoinColumn(name="employeeId")
-
-	private Employee employee;
-	public Employee getEmployee() {
-	return employee;
-}
-
-public void setEmployee(Employee employee) {
-	this.employee = employee;
-}
-
+	private int addressId;
 	private int doorNo;
 	private String streetName;
 	private String state;
+	@ManyToOne(cascade = CascadeType.PERSIST)
+	@JoinColumn(name = "employeeId")
+	private Employee employee;
 
+	public int getAddressId() {
+		return addressId;
+	}
 
+	public void setAddressId(int addressId) {
+		this.addressId = addressId;
+	}
+
+	public Employee getEmployee() {
+		return employee;
+	}
+
+	public void setEmployee(Employee employee) {
+		this.employee = employee;
+	}
 
 	/**
 	 * 

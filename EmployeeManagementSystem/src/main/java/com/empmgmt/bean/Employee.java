@@ -1,26 +1,19 @@
 package com.empmgmt.bean;
 
 import java.util.List;
-
 import javax.persistence.CascadeType;
-import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
-import javax.persistence.Table;
-
-
 
 /**
- * @author 523696 
- * Bean class with variables and appropriate getters and setters  used for accessing variables.
+ * @author 523696 Bean class with variables and appropriate getters and setters
+ *         used for accessing variables.
  *
  */
-@Entity  
-
+@Entity
 
 public class Employee {
 
@@ -32,10 +25,10 @@ public class Employee {
 	private int salary;
 	private int bonus;
 	@OneToMany(cascade = CascadeType.PERSIST)
-	@JoinColumn(name="employeeId")
-	
+	@JoinColumn(name = "employeeId")
+
 	private List<Address> Address;
-    private String dateOfJoining;
+	private String dateOfJoining;
 	private String grade;
 	private String emailId;
 
@@ -136,6 +129,7 @@ public class Employee {
 	public void setAddress(List<Address> address) {
 		Address = address;
 	}
+
 	/**
 	 * 
 	 * @return
