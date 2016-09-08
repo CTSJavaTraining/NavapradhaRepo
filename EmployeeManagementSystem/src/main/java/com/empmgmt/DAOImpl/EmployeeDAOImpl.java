@@ -62,6 +62,8 @@ public class EmployeeDAOImpl implements EmployeeDAO {
 		}
 
 		entityManager.getTransaction().commit();
+		logger.info("Records inserted successfully");
+		getAllEmployees();
 
 	}
 
@@ -73,7 +75,7 @@ public class EmployeeDAOImpl implements EmployeeDAO {
 		// TODO Auto-generated method stub
 		entityManager = EmployeeUtil.getEntityManager();
 		entityManager.getTransaction().begin();
-		logger.info("Employee Id given:"+empId);
+		logger.debug("Employee Id given:"+empId);
 		Query query = entityManager
 				.createQuery("UPDATE Employee e SET e.designation = 'system engineer' " + "WHERE e.id= :id");
 		query.setParameter("id", empId);
@@ -81,9 +83,12 @@ public class EmployeeDAOImpl implements EmployeeDAO {
 		int updateCount = query.executeUpdate();
 		if (updateCount > 0) {
 			logger.info("Record Updated Successfully");
+			entityManager.getTransaction().commit();
+		}else{
+			logger.info("Entered EmpId is invalid.No such data present in DB");
 		}
 
-		entityManager.getTransaction().commit();
+		
 
 	}
 
@@ -95,11 +100,17 @@ public class EmployeeDAOImpl implements EmployeeDAO {
 		// TODO Auto-generated method stub
 		entityManager = EmployeeUtil.getEntityManager();
 		entityManager.getTransaction().begin();
+		logger.debug("Employee Id given:"+empId);
 		Employee emp = (Employee) entityManager.find(Employee.class, empId);
-
+        if(emp!=null){
 		entityManager.remove(emp);
-
 		entityManager.getTransaction().commit();
+		logger.info("Record Deleted Successfully");
+        }else{
+        	logger.info("Entered EmpId is invalid.No such data present in DB");
+        }
+
+		
 	}
 
 }
