@@ -31,15 +31,22 @@ public class EmployeeDAOImpl implements EmployeeDAO {
 
 	public List<Employee> getAllEmployees() {
 		// TODO Auto-generated method stub
+		Query query = null;
+		try{
 		entityManager = EmployeeUtil.getEntityManager();
 		entityManager.getTransaction().begin();
-		Query query = entityManager.createQuery("SELECT e FROM Employee e");
+		 query = entityManager.createQuery("SELECT e FROM Employee e");
 
 		List<Employee> employeeList = query.getResultList();
 		if (employeeList != null) {
 			for (Employee employee : employeeList) {
 				logger.info("Employee Name:" + employee.getEmployeeName());
 			}
+		}
+		
+		}
+		catch(Exception e){
+			logger.info("Exception occurred:"+e.getMessage());
 		}
 		return query.getResultList();
 	}
@@ -51,6 +58,7 @@ public class EmployeeDAOImpl implements EmployeeDAO {
 		// TODO Auto-generated method stub
 
 		logger.info("inserting a employee");
+		try{
 		entityManager = EmployeeUtil.getEntityManager();
 		entityManager.getTransaction().begin();
 		Iterator<Employee> itr = employee.iterator();
@@ -64,6 +72,10 @@ public class EmployeeDAOImpl implements EmployeeDAO {
 		entityManager.getTransaction().commit();
 		logger.info("Records inserted successfully");
 		getAllEmployees();
+		}
+		catch(Exception e){
+			logger.info("Exception occurred:"+e.getMessage());
+		}
 
 	}
 
@@ -73,6 +85,7 @@ public class EmployeeDAOImpl implements EmployeeDAO {
 
 	public void updateEmployee(Integer empId) {
 		// TODO Auto-generated method stub
+		try{
 		entityManager = EmployeeUtil.getEntityManager();
 		entityManager.getTransaction().begin();
 		logger.debug("Employee Id given:"+empId);
@@ -87,8 +100,11 @@ public class EmployeeDAOImpl implements EmployeeDAO {
 		}else{
 			logger.info("Entered EmpId is invalid.No such data present in DB");
 		}
+		}
 
-		
+		catch(Exception e){
+			logger.info("Exception occurred:"+e.getMessage());
+		}
 
 	}
 
@@ -98,6 +114,7 @@ public class EmployeeDAOImpl implements EmployeeDAO {
 
 	public void deleteEmployee(Integer empId) {
 		// TODO Auto-generated method stub
+		try{
 		entityManager = EmployeeUtil.getEntityManager();
 		entityManager.getTransaction().begin();
 		logger.debug("Employee Id given:"+empId);
@@ -109,6 +126,10 @@ public class EmployeeDAOImpl implements EmployeeDAO {
         }else{
         	logger.info("Entered EmpId is invalid.No such data present in DB");
         }
+		}
+		catch(Exception e){
+			logger.info("Exception occurred:"+e.getMessage());
+		}
 
 		
 	}
