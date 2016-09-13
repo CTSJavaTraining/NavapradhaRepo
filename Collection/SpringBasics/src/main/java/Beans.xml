@@ -13,7 +13,11 @@
 		<property name="id" value="234" />
 		<property name="DOJ" value="21-10-2015" />
 		<property name="designation" value="system engineer" />
+		
 		<property name="grade" value="A" />
+		<property name="bonus" value="#{employee1.grade == 'A' ? 10 : 50}"/>
+		
+		
 		
 	</bean>
 
